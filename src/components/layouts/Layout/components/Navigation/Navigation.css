@@ -1,0 +1,33 @@
+.nav__menu{
+    margin: 10px auto;
+    padding: 15px;
+    width: 1000px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    align-items: center;
+}
+.nav__menu--button{
+    width: 100%;
+    height: 100%;
+}
+.menu--button{
+    position: relative;
+    display: flexbox;
+    padding: 0px;
+    min-width: 100%;
+    height:50px;
+}
+.link__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left:0;
+    bottom: 0;
+}
+.active{
+    background-color: red;
+}
