@@ -1,5 +1,15 @@
+
 .allBlogs__menu--button{
+    
     padding: 3px;
-    min-width: 160px;
+     min-width: 120px;
+    min-height: 120px; 
     margin: 5px;
+    background-color: aqua;
+    border-radius: 50%;
+}
+.Change-del{
+    width: 70px;
+    margin-top: 10px;
+    border-radius: 10px;
 }

@@ -1,0 +1,12 @@
+.BlogForm{
+    display: flex;
+    width: 90%;
+    min-height: 55px;
+    padding: 10px;
+    margin: 15px auto;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.Blogs{
+    min-width: 90%;
+}
