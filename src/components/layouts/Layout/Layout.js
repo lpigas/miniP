@@ -1,11 +1,11 @@
-import React from 'react'
-import Navigation from './components/Navigation/Navigation'
+import React from "react";
+import Navigation from "./components/Navigation/Navigation";
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
   return (
     <div>
-        <Navigation/>
-        {children}
+      <Navigation />
+      {children}
     </div>
-  )
+  );
 }
