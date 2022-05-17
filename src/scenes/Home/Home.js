@@ -4,9 +4,7 @@ import Layout from "../../components/layouts/Layout/Layout";
 export default function Home() {
   return (
     <Layout>
-      <div>
-        PISKA
-      </div>
+      <div>PISKA</div>
     </Layout>
   );
 }
