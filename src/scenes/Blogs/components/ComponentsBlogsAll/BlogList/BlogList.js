@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BlogList.css";
 import MyButton from "../../../../../components/atoms/Buttons/MyButton/MyButton";
 import Select from "../../../../../components/atoms/Select/Select";
 import BlogForm from "../Blogform/BlogForm";
 import ModalInput from "../../../../../components/atoms/Modal/ModalIput/ModalInput";
 import InputForm from "../InputForm/InputForm";
-import Input from "../../../../../components/atoms/Input/Input";
-import FindSort from "./ComponentsBlogList/FindSort/FindSort";
+import FindSort from "./ComponentsBlogList/FindSort/FindSortfunction";
+import Findesort from './Functionst/FindSort/Findsort'
 
 export default function BlogList() {
   const [findSortData, setFindSortData] = useState({ find: "", sort: "" });
-  const newId = "Blog-" + Math.ceil(Math.random() * 10001101);
+  const newId = Math.ceil(Math.random() * 10001101);
   const [modalAddnewBlog, setModalAddnewBlog] = useState(false);
   const [newBlogAdd, setNewBlogAdd] = useState({
     id: newId,
@@ -22,6 +22,7 @@ export default function BlogList() {
     { id: 2, title: "Blog number 2", body: "popka2" },
     { id: 3, title: "Blog number 3", body: "popka3" },
   ]);
+  const [blogsAfterFindesort, setBlogsAfterFindesort] = useState(blogs)
   const selectMenuOptions = [
     { name: "10blogs", value: "10" },
     { name: "20blogs", value: "20" },
@@ -42,7 +43,15 @@ export default function BlogList() {
     setModalAddnewBlog(false);
   };
 
+  useEffect(()=>{
+    const x = Findesort(blogs,findSortData)
+    setBlogsAfterFindesort(x)
+  },[findSortData, blogs])
 
+  const resetfilter= () =>{
+    console.log('rer')
+  }
+ 
   return (
     <div className="allBlogs">
       <div className="allBlogs__menu">
@@ -53,7 +62,8 @@ export default function BlogList() {
           >
             Add NEW Blog
           </MyButton>
-          <MyButton className="allBlogs__menu--button">Reset</MyButton>
+          <MyButton className="allBlogs__menu--button"
+          onClick={resetfilter}>Reset</MyButton>
         </div>
       </div>
       <div className="allBlogs__menu--selest">
@@ -66,6 +76,7 @@ export default function BlogList() {
         <Select
           options={selectMenuOptions}
           onChange={(e) => changeSelectBlogsPage(e)}
+          styleforDef={{display:'none'}}
         />
       </div>
       <div></div>
@@ -80,7 +91,7 @@ export default function BlogList() {
       </ModalInput>
 
       {blogs.length > 0 ? (
-        blogs.map((item) => (
+        blogsAfterFindesort.map((item) => (
           <BlogForm
             dataForm={item}
             key={item.id}

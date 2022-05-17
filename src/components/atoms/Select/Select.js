@@ -7,7 +7,10 @@ export default function Select({
   value,
   onChange,
   styleforDef,
-}) {
+  disabled,
+})
+{
+  console.log(disabled)
   return (
     <div>
       <select
@@ -15,7 +18,7 @@ export default function Select({
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
-        <option style={styleforDef} value="" disabled>
+        <option style={styleforDef} value="" disabled={disabled} >
           {defaultOptions}
         </option>
         {options.map((item) => (
