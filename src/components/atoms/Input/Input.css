@@ -1,7 +1,8 @@
-.ModalInutNewBlog{
-    min-width: 90%;
-    margin-top: 5px;
+.ModalInutNewBlog {
+  min-width: 90%;
+  margin-top: 5px;
 }
-.EnterYourBlog{
-    min-height: 50px;
+.EnterYourBlog {
+  min-height: 50px;
+  outline: darkblue;
 }

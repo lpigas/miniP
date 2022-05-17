@@ -1,9 +1,8 @@
-import React from 'react'
-import './ModalInput.css'
+import React from "react";
+import "./ModalInput.css";
 
 export default function ModalInput({ children, visible, setVisible }) {
-    console.log(children)
-    const changeClasses = ["MyModal"];
+  const changeClasses = ["MyModal"];
 
   if (visible) {
     changeClasses.push("active");

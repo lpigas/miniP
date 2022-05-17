@@ -23,6 +23,6 @@
 }
 .allBlogs__menu--selest {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin: 10px;
 }
