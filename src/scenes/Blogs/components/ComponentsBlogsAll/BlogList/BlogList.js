@@ -3,8 +3,11 @@ import "./BlogList.css";
 import MyButton from "../../../../../components/atoms/Buttons/MyButton/MyButton";
 import Select from "../../../../../components/atoms/Select/Select";
 import BlogForm from "../Blogform/BlogForm";
+import ModalInput from "../../../../../components/atoms/Modal/ModalIput/ModalInput";
+import InputForm from "../InputForm/InputForm";
 
 export default function BlogList() {
+  const [modalAddnewBlog, setModalAddnewBlog] = useState(true)
   const [blogs, setBlogs] = useState([
     { id: 1, title: "Blog number 1", body: "popka1" },
     { id: 2, title: "Blog number 2", body: "popka2" },
@@ -24,11 +27,16 @@ export default function BlogList() {
   const changeBlog = (change) => {
     console.log(change);
   };
+  const AddnewBlog = () =>{
+    setModalAddnewBlog(true)
+    console.log(modalAddnewBlog)
+  }
+
   return (
     <div className="allBlogs">
       <div className="allBlogs__menu">
         <div className="allBlogs__menu-button">
-          <MyButton className="allBlogs__menu--button">Add NEW Blog</MyButton>
+          <MyButton className="allBlogs__menu--button" onClick={AddnewBlog}>Add NEW Blog</MyButton>
           <MyButton className="allBlogs__menu--button">Reset</MyButton>
         </div>
       </div>
@@ -39,7 +47,12 @@ export default function BlogList() {
         />
       </div>
       <div></div>
-      {console.log(blogs.length)}
+
+      <ModalInput visible={modalAddnewBlog}
+        setVisible={setModalAddnewBlog}> 
+        <InputForm changeModal={setModalAddnewBlog}/>
+        </ModalInput>
+
       {blogs.length > 0 ? (
         blogs.map((item) => (
           <BlogForm
