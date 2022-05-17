@@ -8,5 +8,10 @@
     border-radius: 15px;
 }
 .Blogs{
-    min-width: 90%;
+    /* display: flex; */
+    min-width: 80%;
+    margin: 10px;
+}
+.dataFormBody{
+    margin-top: 10px;
 }

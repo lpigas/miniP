@@ -27,7 +27,7 @@ const changeBlog = change =>{
     <div className='allBlogs'>
       <div className='allBlogs__menu'>
         <div className='allBlogs__menu-button'>
-        <MyButton className='allBlogs__menu--button'>Add NEW Blog;</MyButton>
+        <MyButton className='allBlogs__menu--button'>Add NEW Blog</MyButton>
         <MyButton className='allBlogs__menu--button'>Reset</MyButton>
         </div>
       </div>
@@ -38,11 +38,14 @@ const changeBlog = change =>{
     <div> 
       
     </div>
-    {blogs.map((item => <BlogForm dataForm={item} 
-      key={item.id}
-      deleteBlog={deleteBlog}
-      changeBlog={changeBlog}
-      />))}
+    {console.log(blogs.length)}
+    {blogs.length> 0 
+      ? blogs.map((item => <BlogForm dataForm={item} 
+        key={item.id}
+        deleteBlog={deleteBlog}
+        changeBlog={changeBlog}
+        />))
+      : <h1 style={{textAlign: 'center'}}>No any blogs yet</h1>}
       
     </div>
   )

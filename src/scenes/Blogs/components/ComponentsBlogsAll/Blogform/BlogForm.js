@@ -3,12 +3,13 @@ import MyButton from '../../../../../components/atoms/Buttons/MyButton/MyButton'
 import './BlogForm.css'
 
 export default function BlogForm({dataForm, changeBlog, deleteBlog}) {
-    console.log(dataForm)
+    
   return (
     <div className='BlogForm' key={dataForm.id}>
         <div className='Blogs'>
-        <div>
-            {dataForm.title}
+            {dataForm.id}.{dataForm.title}
+        <div className='dataFormBody'>
+          {dataForm.body}
         </div>
         </div>
         <div className='BlogsButton'>
