@@ -10,7 +10,6 @@ export default function Select({
   disabled,
 })
 {
-  console.log(disabled)
   return (
     <div>
       <select

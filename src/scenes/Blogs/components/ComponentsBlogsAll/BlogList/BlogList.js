@@ -5,11 +5,13 @@ import Select from "../../../../../components/atoms/Select/Select";
 import BlogForm from "../Blogform/BlogForm";
 import ModalInput from "../../../../../components/atoms/Modal/ModalIput/ModalInput";
 import InputForm from "../InputForm/InputForm";
-import FindSort from "./ComponentsBlogList/FindSort/FindSortfunction";
-import Findesort from './Functionst/FindSort/Findsort'
+import FindSort from "./ComponentsBlogList/FindSort/FindSort";
+import Findsortfunction from './Functionst/FindSort/Findsortfunction'
 
-export default function BlogList() {
+
+export default function BlogList({totalPages,setTotalPages}) {
   const [findSortData, setFindSortData] = useState({ find: "", sort: "" });
+  const [blogsINPage,setBlogsINPage] = useState(10)
   const newId = Math.ceil(Math.random() * 10001101);
   const [modalAddnewBlog, setModalAddnewBlog] = useState(false);
   const [newBlogAdd, setNewBlogAdd] = useState({
@@ -17,26 +19,32 @@ export default function BlogList() {
     title: "",
     body: "",
   });
+
   const [blogs, setBlogs] = useState([
     { id: 1, title: "Blog number 1", body: "popka1" },
     { id: 2, title: "Blog number 2", body: "popka2" },
     { id: 3, title: "Blog number 3", body: "popka3" },
   ]);
+
   const [blogsAfterFindesort, setBlogsAfterFindesort] = useState(blogs)
   const selectMenuOptions = [
     { name: "10blogs", value: "10" },
     { name: "20blogs", value: "20" },
     { name: "50blogs", value: "50" },
   ];
+
   const changeSelectBlogsPage = (e) => {
-    console.log(e);
+    setBlogsINPage(+e)
   };
+
   const deleteBlog = (delBlog) => {
     setBlogs(blogs.filter((item) => item !== delBlog));
   };
+
   const changeBlog = (change) => {
     console.log(change);
   };
+
   const AddingBlog = () => {
     setBlogs([newBlogAdd, ...blogs]);
     setNewBlogAdd({ id: newId, title: "", body: "" });
@@ -44,14 +52,21 @@ export default function BlogList() {
   };
 
   useEffect(()=>{
-    const x = Findesort(blogs,findSortData)
+    const x = Findsortfunction(blogs,findSortData)
     setBlogsAfterFindesort(x)
   },[findSortData, blogs])
 
   const resetfilter= () =>{
+    setBlogsAfterFindesort(blogs)
+    setFindSortData({ find: "", sort: "" })
     console.log('rer')
   }
- 
+  useEffect(()=>{
+    setTotalPages(Math.ceil(blogs.length/blogsINPage))
+  },[blogs,blogsINPage])
+
+
+
   return (
     <div className="allBlogs">
       <div className="allBlogs__menu">
@@ -77,6 +92,7 @@ export default function BlogList() {
           options={selectMenuOptions}
           onChange={(e) => changeSelectBlogsPage(e)}
           styleforDef={{display:'none'}}
+          disabled={true}
         />
       </div>
       <div></div>
@@ -89,7 +105,6 @@ export default function BlogList() {
           onClick={AddingBlog}
         />
       </ModalInput>
-
       {blogs.length > 0 ? (
         blogsAfterFindesort.map((item) => (
           <BlogForm

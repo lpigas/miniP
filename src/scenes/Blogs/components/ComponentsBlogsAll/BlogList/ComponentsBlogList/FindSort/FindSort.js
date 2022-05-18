@@ -17,10 +17,12 @@ export default function FindSort({ setDataFindsort, dataFindsort }) {
         onChange={(e) => setDataFindsort({ ...dataFindsort, sort: e })}
         defaultOptions='sort by'
         disabled={dataFindsort.sort}
+        value={dataFindsort.sort}
         style={style}
       ></Select>
       <input
         placeholder="Enter your find Title"
+        value={dataFindsort.find}
         onChange={(e) =>
           setDataFindsort({ ...dataFindsort, find: e.target.value })
         }

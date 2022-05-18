@@ -52,7 +52,7 @@ export default function CustomizedButtons({ children, onClick }) {
   const classes = useStyles();
 
   return (
-    <div>
+    <div disabled>
       <BootstrapButton
         onClick={onClick}
         variant="contained"
