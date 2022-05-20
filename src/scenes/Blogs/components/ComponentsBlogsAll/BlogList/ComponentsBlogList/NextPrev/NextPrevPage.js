@@ -1,27 +1,47 @@
-import React from 'react'
-import MyButton from '../../../../../../../components/atoms/Buttons/MyButton/MyButton'
-import './NextPrevPage.css'
-export default function NextPrevPage({numberOfPage = 1, setNumberOfPage, totalPages}) {
-    const nextPage = () =>{
-        if (numberOfPage >= totalPages){
-            setNumberOfPage(totalPages)
-        }else {
-            setNumberOfPage(numberOfPage + 1)
-        }
+import MyButton from "../../../../../../../components/atoms/Buttons/MyButton/MyButton";
+import "./NextPrevPage.css";
+import { useSearchParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
+export default function NextPrevPage({
+  numberOfPage = 1,
+  setNumberOfPage,
+  totalPages,
+}) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState(+searchParams.get("_page") || numberOfPage);
+  const [limit, setLimit] = useState(+searchParams.get("_limit"));
+  useEffect(() => {
+    setPage(+searchParams.get("_page") || numberOfPage);
+    setLimit(+searchParams.get("_limit"))
+    setNumberOfPage(+searchParams.get("_page"))
+  }, [numberOfPage, totalPages]);
+
+  const nextPage = () => {
+    if (numberOfPage >= totalPages) {
+      setNumberOfPage(totalPages);
+    } else {
+      setSearchParams({ _page: page + 1, _limit: limit });
+      setNumberOfPage(page + 1);
     }
-    const prevPage = () =>{
-        if (numberOfPage <= 1){
-            setNumberOfPage(1)
-        } else {
-            setNumberOfPage(numberOfPage - 1)
-        }
-        
+  };
+  const prevPage = () => {
+    if (numberOfPage <= 1) {
+      setNumberOfPage(1);
+    } else {
+      setSearchParams({ _page: page - 1, _limit: limit });
+      setNumberOfPage(page - 1);
     }
+  };
   return (
-    <div className='NextPrevPage'>
-        <MyButton disabled onClick={prevPage}>Prev Page</MyButton>
-        <div>{numberOfPage} from {totalPages}</div>
-        <MyButton onClick={nextPage}>Next Page</MyButton>
+    <div className="NextPrevPage">
+      <MyButton disabled onClick={prevPage}>
+        Prev Page
+      </MyButton>
+      <div>
+        {numberOfPage} from {totalPages}
+      </div>
+      <MyButton onClick={nextPage}>Next Page</MyButton>
     </div>
-  )
+  );
 }

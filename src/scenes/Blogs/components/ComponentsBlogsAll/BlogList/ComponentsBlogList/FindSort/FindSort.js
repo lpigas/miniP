@@ -15,7 +15,7 @@ export default function FindSort({ setDataFindsort, dataFindsort }) {
       <Select
         options={selectsortOptions}
         onChange={(e) => setDataFindsort({ ...dataFindsort, sort: e })}
-        defaultOptions='sort by'
+        defaultOptions="sort by"
         disabled={dataFindsort.sort}
         value={dataFindsort.sort}
         style={style}
