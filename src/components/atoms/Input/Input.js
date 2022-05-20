@@ -6,11 +6,13 @@ export default function Input({
   className,
   placeholder = [""],
   onChange,
+  disabled,
 }) {
   return (
     <div>
       <div className={className}>
         <textarea
+          disabled={disabled}
           type="text"
           cols="50"
           className={className}

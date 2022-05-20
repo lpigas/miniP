@@ -10,24 +10,22 @@ export default function BlogAll() {
   const [numberOfPage, setNumberOfPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [lengths, setLengths] =useState()
+  const [lengths, setLengths] = useState();
   const [page, setPage] = useState(+searchParams.get("_limit") || 10);
 
   const fullLength = async () => {
     try {
       const postsData = await axios.get(BASE_URL);
-      setLengths(postsData.data.length)
-      setTotalPages(Math.ceil(lengths/page));
-    } catch (error) {
-    }
+      setLengths(postsData.data.length);
+      setTotalPages(Math.ceil(lengths / page));
+    } catch (error) {}
   };
 
-
-  useEffect(()=>{
-    setPage(+searchParams.get("_limit"))
-    fullLength()
-    setTotalPages(Math.ceil(lengths/page));
-  },[lengths, page, searchParams])
+  useEffect(() => {
+    setPage(+searchParams.get("_limit"));
+    fullLength();
+    setTotalPages(Math.ceil(lengths / page));
+  }, [lengths, page, searchParams]);
 
   return (
     <Layout>

@@ -10,43 +10,40 @@ import Findsortfunction from "./Functionst/FindSort/Findsortfunction";
 import { useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../../../helpers/constants/constantsurl";
 import axios from "axios";
+import Loading from "../../../../../components/atoms/Loading/Loading";
 
-export default function BlogList({ totalPages, setTotalPages }) {
+export default function BlogList() {
   const [findSortData, setFindSortData] = useState({ find: "", sort: "" });
   const newId = Math.ceil(Math.random() * 10001101);
   const [modalAddnewBlog, setModalAddnewBlog] = useState(false);
+  const [modalChange, setModalChange] = useState(false);
   const [newBlogAdd, setNewBlogAdd] = useState({
     id: newId,
     title: "",
     body: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState({
     _page: searchParams.get("_page") || 1,
     _limit: searchParams.get("_limit") || 10,
   });
- 
-  
-  
+  const [blogforChanging, setBlogforChanging] = useState();
   const [datafromurl, setDatafromurl] = useState(
     `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
-    );
-    
-    
+  );
 
-  const [blogs, setBlogs] = useState([
-    { id: 1, title: "Blog number 1", body: "popka1" },
-    { id: 2, title: "Blog number 2", body: "popka2" },
-    { id: 3, title: "Blog number 3", body: "popka3" },
-  ]);
+  const [blogs, setBlogs] = useState([]);
   const fullLength = async (fullUrl) => {
+    setIsLoading(true);
     try {
       const postsData = await axios.get(fullUrl);
-       setBlogs(postsData.data)
-    } catch (error) {
-    }
+      setTimeout(() => {
+        setBlogs(postsData.data);
+        setIsLoading(false);
+      }, 1500);
+    } catch (error) {}
   };
-
 
   const [blogsAfterFindesort, setBlogsAfterFindesort] = useState(blogs);
   const selectMenuOptions = [
@@ -60,15 +57,24 @@ export default function BlogList({ totalPages, setTotalPages }) {
     setPage({
       _page: searchParams.get("_page") || 1,
       _limit: searchParams.get("_limit"),
-    })
+    });
   };
-
+  const ChangeBlog = () => {
+    const x = blogs.map((item) =>
+      item.title === blogforChanging.title && item.id === blogforChanging.id
+        ? { ...item, body: blogforChanging.body }
+        : item
+    );
+    setBlogs(x);
+    setModalChange(false);
+  };
   const deleteBlog = (delBlog) => {
     setBlogs(blogs.filter((item) => item !== delBlog));
   };
 
   const changeBlog = (change) => {
-    console.log(change);
+    setBlogforChanging(change);
+    setModalChange(true);
   };
 
   const AddingBlog = () => {
@@ -78,8 +84,10 @@ export default function BlogList({ totalPages, setTotalPages }) {
   };
 
   useEffect(() => {
-    const x = Findsortfunction(blogs, findSortData);
-    setBlogsAfterFindesort(x);
+    if (blogs) {
+      const x = Findsortfunction(blogs, findSortData);
+      setBlogsAfterFindesort(x);
+    }
   }, [findSortData, blogs]);
 
   const resetfilter = () => {
@@ -87,7 +95,6 @@ export default function BlogList({ totalPages, setTotalPages }) {
     setFindSortData({ find: "", sort: "" });
   };
 
-  
   useEffect(() => {
     setDatafromurl(
       `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
@@ -95,13 +102,12 @@ export default function BlogList({ totalPages, setTotalPages }) {
     setPage({
       _page: searchParams.get("_page") || 1,
       _limit: searchParams.get("_limit"),
-    })
-    console.log('test')
+    });
   }, [searchParams, blogs]);
 
-  useEffect(()=>{
-    fullLength(BASE_URL + datafromurl)
-  },[datafromurl,  page._limit])
+  useEffect(() => {
+    fullLength(BASE_URL + datafromurl);
+  }, [datafromurl, page._limit]);
 
   return (
     <div className="allBlogs">
@@ -129,7 +135,7 @@ export default function BlogList({ totalPages, setTotalPages }) {
           options={selectMenuOptions}
           onChange={(e) => changeSelectBlogsPage(e)}
           styleforDef={{ display: "none" }}
-          disabled={true}
+          defaultOptions={`${page._limit}blogs`}
         />
       </div>
       <div></div>
@@ -142,7 +148,20 @@ export default function BlogList({ totalPages, setTotalPages }) {
           onClick={AddingBlog}
         />
       </ModalInput>
-      {blogs.length > 0 ? (
+      <ModalInput visible={modalChange} setVisible={setModalChange}>
+        {modalChange && (
+          <InputForm
+            disabled={true}
+            changeModal={setModalChange}
+            blog={blogforChanging}
+            setBlog={setBlogforChanging}
+            onClick={ChangeBlog}
+          />
+        )}
+      </ModalInput>
+      {isLoading ? (
+        <Loading />
+      ) : blogs.length > 0 ? (
         blogsAfterFindesort.map((item) => (
           <BlogForm
             dataForm={item}

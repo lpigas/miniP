@@ -13,8 +13,8 @@ export default function NextPrevPage({
   const [limit, setLimit] = useState(+searchParams.get("_limit"));
   useEffect(() => {
     setPage(+searchParams.get("_page") || numberOfPage);
-    setLimit(+searchParams.get("_limit"))
-    setNumberOfPage(+searchParams.get("_page"))
+    setLimit(+searchParams.get("_limit"));
+    setNumberOfPage(+searchParams.get("_page"));
   }, [numberOfPage, totalPages]);
 
   const nextPage = () => {
