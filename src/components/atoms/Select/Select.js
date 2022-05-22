@@ -9,6 +9,7 @@ export default function Select({
   styleforDef,
   disabled,
 }) {
+  // console.log(defaultOptions)
   return (
     <div>
       <select

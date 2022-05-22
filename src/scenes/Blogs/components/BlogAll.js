@@ -5,27 +5,39 @@ import NextPrevPage from "./ComponentsBlogsAll/BlogList/ComponentsBlogList/NextP
 import { BASE_URL } from "../../../helpers/constants/constantsurl";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import Select from "../../../components/atoms/Select/Select";
 
 export default function BlogAll() {
   const [numberOfPage, setNumberOfPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [lengths, setLengths] = useState();
-  const [page, setPage] = useState(+searchParams.get("_limit") || 10);
+  const [limit, setLimit] = useState(+searchParams.get("_limit") || 10);
+  const [page, setPage] = useState(+searchParams.get("_page"));
 
   const fullLength = async () => {
     try {
       const postsData = await axios.get(BASE_URL);
       setLengths(postsData.data.length);
-      setTotalPages(Math.ceil(lengths / page));
+      setTotalPages(Math.ceil(lengths / limit));
     } catch (error) {}
+  };
+  const optionPage = [];
+  if (totalPages) {
+    for (let i = 1; i <= totalPages; i++) {
+      optionPage.push({ name: `${+i}`, value: `${+i}` });
+    }
+  }
+  const enterSelectpage = (pageSelect) => {
+    setSearchParams({ _page: +pageSelect, _limit: limit });
   };
 
   useEffect(() => {
-    setPage(+searchParams.get("_limit"));
+    setLimit(+searchParams.get("_limit"));
+    setPage(+searchParams.get("_page"));
     fullLength();
-    setTotalPages(Math.ceil(lengths / page));
-  }, [lengths, page, searchParams]);
+    setTotalPages(Math.ceil(lengths / limit));
+  }, [lengths, limit, searchParams]);
 
   return (
     <Layout>
@@ -35,6 +47,16 @@ export default function BlogAll() {
           setTotalPages={setTotalPages}
         ></BlogList>
       </div>
+      <div>
+        {console.log(page)}
+        <Select
+          options={optionPage}
+          onChange={(e) => enterSelectpage(e)}
+          styleforDef={{ display: "none" }}
+          value={`${page}`}
+        />
+      </div>
+
       <NextPrevPage
         numberOfPage={numberOfPage}
         setNumberOfPage={setNumberOfPage}

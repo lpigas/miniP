@@ -15,7 +15,7 @@ export default function NextPrevPage({
     setPage(+searchParams.get("_page") || numberOfPage);
     setLimit(+searchParams.get("_limit"));
     setNumberOfPage(+searchParams.get("_page"));
-  }, [numberOfPage, totalPages]);
+  }, [numberOfPage, totalPages, searchParams]);
 
   const nextPage = () => {
     if (numberOfPage >= totalPages) {
