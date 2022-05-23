@@ -14,7 +14,7 @@ export default function BlogAll() {
   const [lengths, setLengths] = useState();
   const [limit, setLimit] = useState(+searchParams.get("_limit") || 10);
   const [page, setPage] = useState(+searchParams.get("_page"));
-
+  
   const fullLength = async () => {
     try {
       const postsData = await axios.get(BASE_URL);
@@ -48,7 +48,6 @@ export default function BlogAll() {
         ></BlogList>
       </div>
       <div>
-        {console.log(page)}
         <Select
           options={optionPage}
           onChange={(e) => enterSelectpage(e)}
