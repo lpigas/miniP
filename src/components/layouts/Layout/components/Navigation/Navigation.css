@@ -1,5 +1,5 @@
 .nav__menu {
-  margin: 0px;
+  margin: 1px;
   padding: 0px;
   max-width: 100%;
   width: 100%;
@@ -19,5 +19,7 @@
 .active {
   min-width: 100%;
   min-height: 100%;
-  background-color: red;
+  background-color: rgb(212, 46, 46);
+  color: rgb(5, 5, 5);
+  opacity: 0.7;
 }

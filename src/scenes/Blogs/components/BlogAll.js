@@ -14,10 +14,10 @@ export default function BlogAll() {
   const [lengths, setLengths] = useState();
   const [limit, setLimit] = useState(+searchParams.get("_limit") || 10);
   const [page, setPage] = useState(+searchParams.get("_page"));
-  
+
   const fullLength = async () => {
     try {
-      const postsData = await axios.get(BASE_URL);
+      const postsData = await axios.get(`${BASE_URL}posts`);
       setLengths(postsData.data.length);
       setTotalPages(Math.ceil(lengths / limit));
     } catch (error) {}

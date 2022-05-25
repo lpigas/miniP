@@ -12,9 +12,8 @@ import { BASE_URL } from "../../../../../helpers/constants/constantsurl";
 import axios from "axios";
 import Loading from "../../../../../components/atoms/Loading/Loading";
 
-
 export default function BlogList() {
-  const [addedBlog, setAddedblog] = useState([])
+  const [addedBlog, setAddedblog] = useState([]);
   const [findSortData, setFindSortData] = useState({ find: "", sort: "" });
   const newId = Math.ceil(Math.random() * 10001101);
   const [modalAddnewBlog, setModalAddnewBlog] = useState(false);
@@ -32,7 +31,7 @@ export default function BlogList() {
   });
   const [blogforChanging, setBlogforChanging] = useState();
   const [datafromurl, setDatafromurl] = useState(
-    `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+    `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
   );
 
   const [blogs, setBlogs] = useState([]);
@@ -71,7 +70,6 @@ export default function BlogList() {
     setModalChange(false);
   };
   const deleteBlog = (delBlog) => {
-
     setBlogs(blogs.filter((item) => item !== delBlog));
   };
 
@@ -88,7 +86,7 @@ export default function BlogList() {
   //   } catch (error) {}
   //   setIsLoading(false);
   // };
-  
+
   //send new blog at server and get blogs
 
   // const newblogfunc = async (delBlog) => {
@@ -101,13 +99,11 @@ export default function BlogList() {
   //   } catch (error) {}
   //   setIsLoading(false);
   // };
-//delete blog at server and get blogs
-  
-  
+  //delete blog at server and get blogs
 
   const AddingBlog = () => {
-    setModalAddnewBlog(false)
-    setAddedblog([...addedBlog,newBlogAdd])
+    setModalAddnewBlog(false);
+    setAddedblog([...addedBlog, newBlogAdd]);
 
     setBlogs([newBlogAdd, ...blogs]);
     setNewBlogAdd({ id: newId, title: "", body: "" });
@@ -125,11 +121,9 @@ export default function BlogList() {
     setFindSortData({ find: "", sort: "" });
   };
 
-
   useEffect(() => {
-
     setDatafromurl(
-      `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+      `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
     );
     setPage({
       _page: searchParams.get("_page") || 1,

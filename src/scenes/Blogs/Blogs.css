@@ -1,7 +1,8 @@
 .enterBloglist {
-  width: 100%;
+  max-width: 100%;
+  min-height: 65vh;
   margin: auto;
-  /* padding: 15px; */
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;

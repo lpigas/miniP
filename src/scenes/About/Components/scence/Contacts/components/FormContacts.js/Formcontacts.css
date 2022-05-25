@@ -1,0 +1,20 @@
+.contacts {
+  display: flex;
+  margin: 0px auto;
+  width: 326px;
+  max-height: 40vh;
+  padding: 10px;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 12px;
+}
+.contacts_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 29px;
+}
+.contacts__data {
+  margin: 5px;
+}

@@ -1,10 +1,11 @@
 import React from "react";
+import "./Home.css";
 import Layout from "../../components/layouts/Layout/Layout";
-// import BlogList from "../Blogs/components/ComponentsBlogsAll/BlogList/BlogList";
+
 export default function Home() {
   return (
     <Layout>
-      <div>PISKA</div>
+      <div className="home">PISKA</div>
     </Layout>
   );
 }
