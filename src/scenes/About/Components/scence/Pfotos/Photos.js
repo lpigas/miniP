@@ -6,9 +6,11 @@ import { useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../../../helpers/constants/constantsurl";
 import axios from "axios";
 import Form from "./Components/Form/Form";
+
 export default function Photos() {
   const [numberOfPage, setNumberOfPage] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [photoLength, setPhotoLength] = useState([]);
   const [fullDataUrl, setFullDataUrl] = useState({
     _page: searchParams.get("_page") || 1,
     _limit: 50,
@@ -30,10 +32,12 @@ export default function Photos() {
   const feachPhotoData = async () => {
     try {
       const datas = await axios.get(photoUrl);
+      const lengthPhotos = await axios.get(`${BASE_URL}photos`);
+      setPhotoLength(lengthPhotos.data);
       setPhotoData(datas.data);
     } catch (e) {}
   };
-
+  console.log(photoLength.length);
   return (
     <Layout>
       <div className="photosblock">
@@ -41,6 +45,7 @@ export default function Photos() {
           <NextPrev
             numberOfPage={numberOfPage}
             setNumberOfPage={setNumberOfPage}
+            totalPages={photoLength.length / fullDataUrl._limit}
           />
         </div>
         <div className="photosblock__conteiner">

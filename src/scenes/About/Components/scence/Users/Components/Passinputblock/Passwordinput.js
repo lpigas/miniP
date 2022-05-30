@@ -1,7 +1,8 @@
 import React from "react";
 import InputPassword from "../../../../../../../components/atoms/Input/InputPassword";
 import MyButton from "../../../../../../../components/atoms/Buttons/MyButton/MyButton";
-import './Passwordinput.css'
+import "./Passwordinput.css";
+import { Link } from "react-router-dom";
 export default function Passwordinput({ datablock, setDataBlock, onClick }) {
   return (
     <div>
@@ -21,7 +22,17 @@ export default function Passwordinput({ datablock, setDataBlock, onClick }) {
         }
         value={datablock.password}
       />
-      <MyButton onClick={onClick}> LogIn</MyButton>
+      <div style={{ display: "flex" }}>
+        <MyButton onClick={onClick}> LogIn</MyButton>
+        <MyButton>
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to="../aboute"
+          >
+            Back
+          </Link>
+        </MyButton>
+      </div>
     </div>
   );
 }

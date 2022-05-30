@@ -31,7 +31,9 @@ export default function BlogList() {
   });
   const [blogforChanging, setBlogforChanging] = useState();
   const [datafromurl, setDatafromurl] = useState(
-    `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+    `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get(
+      "_limit"
+    )}`
   );
 
   const [blogs, setBlogs] = useState([]);
@@ -123,7 +125,9 @@ export default function BlogList() {
 
   useEffect(() => {
     setDatafromurl(
-      `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+      `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get(
+        "_limit"
+      )}`
     );
     setPage({
       _page: searchParams.get("_page") || 1,

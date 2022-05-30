@@ -10,6 +10,7 @@ import Contacts from "./scenes/About/Components/scence/Contacts/Contacts";
 import "./App.css";
 import Users from "./scenes/About/Components/scence/Users/Users";
 import Photos from "./scenes/About/Components/scence/Pfotos/Photos";
+import Comments from "./scenes/About/Components/scence/Comments/Comments";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about/contacts" element={<Contacts />} />
         <Route path="/about/users" element={<Users />} />
         <Route path="/about/photos" element={<Photos />} />
+        <Route path="/about/comments" element={<Comments />} />
         <Route path="/blog" element={<Blogs />} />
         <Route path="/blog/blogs" element={<BlogAll />} />
         <Route path="/home" element={<Home />} />

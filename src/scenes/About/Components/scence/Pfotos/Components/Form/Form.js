@@ -8,7 +8,6 @@ export default function Form({ data }) {
       ) : (
         data.map((item) => (
           <div key={item.url} className="photosblock__conteiner--photo">
-            {console.log(item)}
             <img
               alt={item.title}
               src={item.url}

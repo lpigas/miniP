@@ -35,7 +35,7 @@ export default function Footer() {
           <tr className="bodysTr">
             <td className="footer__link">about3</td>
             <td className="footer__link">
-              <Link to="">Comments</Link>
+              <Link to="/about/comments">Comments</Link>
             </td>
             <td className="footer__link">
               <Link to="../blog/blogs?_page=1&_limit=50">Blogs 50pcs</Link>

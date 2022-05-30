@@ -7,15 +7,18 @@ export default function ModalInput({
   setVisible,
   pass = false,
 }) {
-  const changeClasses = ["MyModal"]
-  
+  const changeClasses = ["MyModal"];
+
   if (visible) {
     changeClasses.push("active");
-  } 
+  }
 
   return (
     <div className={changeClasses.join(" ")} onClick={() => setVisible(pass)}>
-      <div className={pass? "MyModalContentPass" :"MyModalContent"} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={pass ? "MyModalContentPass" : "MyModalContent"}
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </div>
