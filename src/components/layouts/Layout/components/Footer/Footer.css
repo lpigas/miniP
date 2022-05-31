@@ -6,20 +6,24 @@
   margin: 1vh auto 5px auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: row;
 }
 .bodysTr {
   width: 100%;
-  /* background: #000; */
   display: flex;
-  margin: 5px;
+
   justify-content: center;
 }
 .footer__link {
+  text-decoration: none;
   display: flex;
   width: 225px;
   height: 15px;
-  justify-content: center;
+  justify-content: space-between;
   margin: 2px;
+}
+.table {
+  width: 100%;
+  margin: auto;
 }

@@ -25,10 +25,7 @@ export default function Passwordinput({ datablock, setDataBlock, onClick }) {
       <div style={{ display: "flex" }}>
         <MyButton onClick={onClick}> LogIn</MyButton>
         <MyButton>
-          <Link
-            style={{ textDecoration: "none", color: "white" }}
-            to="../aboute"
-          >
+          <Link style={{ textDecoration: "none", color: "white" }} to="../menu">
             Back
           </Link>
         </MyButton>

@@ -7,6 +7,7 @@ import { BASE_URL } from "../../../../../helpers/constants/constantsurl";
 import TablBlock from "./Components/TablBlock/TablBlock";
 import axios from "axios";
 import Datapasswords from "../../../../../helpers/JSON/Datapaswords.json";
+
 export default function Users() {
   const usersUrl = `${BASE_URL}users`;
   const [usersData, setUsersData] = useState([]);
@@ -18,17 +19,6 @@ export default function Users() {
   });
   const [modalLogin, setModalLogin] = useState(true);
   const [blockedModal, setBlockedModal] = useState(true);
-  // const passwordfound = async() =>{
-  //   try{
-  //     const passwordData = await fetch(Datapasswords)
-  //     console.log(passwordData.data)
-  //   } catch (e){
-
-  //   }
-  // }
-  // passwordfound()
-  // console.log(Datapasswords)
-  // console.log(enterLoginPassword);
 
   const changePassword = () => {
     Datapasswords.map((item) => {
@@ -52,6 +42,7 @@ export default function Users() {
   useEffect(() => {
     backUsersData();
   }, []);
+
   const Sorting = (tipeSort) => {
     if (tipeSort !== sortData) {
       if (tipeSort === "id") {

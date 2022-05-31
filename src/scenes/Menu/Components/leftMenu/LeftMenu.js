@@ -103,6 +103,18 @@ export default function TemporaryDrawer({ onClick }) {
               >
                 {text}
               </Link>
+            ) : text === "Map Website" ? (
+              <Link
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+                to={`../menu/helps`}
+              >
+                {text}
+              </Link>
             ) : (
               <Link
                 primary={text}
@@ -131,7 +143,7 @@ export default function TemporaryDrawer({ onClick }) {
             onClick={toggleDrawer("left", true)}
             style={anchor === "left" ? style : { display: "none" }}
           >
-            {"<=" + anchor + " MENU"}
+            {anchor + " MENU"}
           </Button>
           <Drawer
             anchor={anchor}

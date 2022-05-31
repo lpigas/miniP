@@ -1,0 +1,95 @@
+.ClockBody {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Clock {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://kartinkin.net/uploads/posts/2022-02/1645691091_15-kartinkin-net-p-tsiferblat-chasov-kartinki-15.png"),
+    url("https://upload.wikimedia.org/wikipedia/commons/1/1e/RPC-JP_Logo.png"),
+    radial-gradient(
+      circle,
+      rgb(63, 149, 189) 0%,
+      rgb(138, 173, 192) 13%,
+      rgb(37, 49, 49) 38%
+    );
+  background-size: cover;
+  box-shadow: 0 -10px 10px rgba(255, 255, 0, 0.65),
+    inset 0 10px 10px rgba(241, 241, 9, 0.5),
+    0 -10px 10px rgba(255, 255, 5, 0.65),
+    inset 0 -10px 10px rgba(255, 255, 0, 0.35);
+  border-radius: 50%;
+}
+
+.Clock:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 1, 0.733);
+  border-radius: 50%;
+  z-index: 999;
+}
+.Clock .hour,
+.Clock .minute,
+.Clock .seconds {
+  position: absolute;
+}
+.Clock .hour,
+.hr {
+  width: 160px;
+  height: 160px;
+}
+.Clock .minute,
+.min {
+  width: 190px;
+  height: 190px;
+}
+.Clock .seconds,
+.sec {
+  width: 230px;
+  height: 230px;
+}
+.hr,
+.min,
+.sec {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hr:before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 80px;
+  background-color: rgba(255, 255, 1, 0.733);
+  z-index: 10;
+  border-radius: 3px 3px 0 0;
+}
+.min:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 90px;
+  background-color: rgba(255, 255, 1, 0.733);
+  z-index: 11;
+  border-radius: 3px 3px 0 0;
+}
+.sec:before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 150px;
+  background-color: rgba(255, 255, 1, 0.733);
+  z-index: 12;
+  border-radius: 3px 3px 0 0;
+}

@@ -1,0 +1,28 @@
+.Helps {
+  width: 180vh;
+  min-height: 65vh;
+  margin: 20px auto;
+}
+.imgHelpForm {
+  margin: 15px;
+  border: 3px solid black;
+  width: 50vh;
+  height: 50vh;
+}
+.Helps__Form--imgHome {
+  display: flex;
+  justify-content: space-evenly;
+  border: 3px solid black;
+}
+.Helps__Form--imgMenu {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border: 3px solid black;
+}
+
+.Helps__Form--imgBlogs {
+  display: flex;
+  justify-content: space-evenly;
+  border: 3px solid black;
+}

@@ -28,10 +28,10 @@ export default function Navigation() {
           imgurl="https://cdn.w600.comps.canstockphoto.com/about-me-stock-photo_csp32110446.jpg"
           value={
             <Link
-              to="../about"
+              to="../menu"
               className={`link__button ${id.includes("about") && "active"}`}
             >
-              About
+              Menu
             </Link>
           }
         >

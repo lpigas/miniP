@@ -1,4 +1,4 @@
-.About {
+.Menu {
   margin: auto;
   margin-top: 20px;
   padding-bottom: 0px;
@@ -7,13 +7,13 @@
   background-image: url("https://st.depositphotos.com/1003593/3947/i/450/depositphotos_39479909-stock-photo-about-us-blue-marker.jpg");
   background-size: 100%;
 }
-.About__block {
+.Menu__block {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
 }
-.About__leftMenu {
+.Menu__leftMenu {
   position: sticky;
   bottom: 0;
   top: 100%;

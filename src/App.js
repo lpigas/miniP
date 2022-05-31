@@ -3,29 +3,30 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./scenes/Home/Home";
-import About from "./scenes/About/About";
+import Menu from "./scenes/Menu/Menu";
 import Blogs from "./scenes/Blogs/Blogs";
 import BlogAll from "./scenes/Blogs/components/BlogAll";
-import Contacts from "./scenes/About/Components/scence/Contacts/Contacts";
+import Contacts from "./scenes/Menu/Components/scence/Contacts/Contacts";
 import "./App.css";
-import Users from "./scenes/About/Components/scence/Users/Users";
-import Photos from "./scenes/About/Components/scence/Pfotos/Photos";
-import Comments from "./scenes/About/Components/scence/Comments/Comments";
+import Users from "./scenes/Menu/Components/scence/Users/Users";
+import Photos from "./scenes/Menu/Components/scence/Pfotos/Photos";
+import Comments from "./scenes/Menu/Components/scence/Comments/Comments";
+import Helps from "./scenes/Menu/Components/scence/Helps/Helps";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/about/contacts" element={<Contacts />} />
-        <Route path="/about/users" element={<Users />} />
-        <Route path="/about/photos" element={<Photos />} />
-        <Route path="/about/comments" element={<Comments />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/menu/contacts" element={<Contacts />} />
+        <Route path="/menu/users" element={<Users />} />
+        <Route path="/menu/photos" element={<Photos />} />
+        <Route path="/menu/comments" element={<Comments />} />
+        <Route path="/menu/helps" element={<Helps />} />
         <Route path="/blog" element={<Blogs />} />
         <Route path="/blog/blogs" element={<BlogAll />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/:id" element={<About />} />
       </Routes>
     </Router>
   );
