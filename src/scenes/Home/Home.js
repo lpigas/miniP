@@ -30,7 +30,7 @@ export default function Home() {
           image may have several complementary elements as an overlay, such as
           the website's logo, a call to action, and a brief description.
         </div>
-        <Clock />
+        {/* <Clock /> */}
       </div>
     </Layout>
   );

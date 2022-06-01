@@ -1,6 +1,7 @@
 .ClockBody {
   margin: 0;
   padding: 0;
+  margin-top: 15px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -16,8 +17,8 @@
     url("https://upload.wikimedia.org/wikipedia/commons/1/1e/RPC-JP_Logo.png"),
     radial-gradient(
       circle,
-      rgb(63, 149, 189) 0%,
-      rgb(138, 173, 192) 13%,
+      rgb(0, 174, 255) 0%,
+      rgb(255, 188, 4) 13%,
       rgb(37, 49, 49) 38%
     );
   background-size: cover;

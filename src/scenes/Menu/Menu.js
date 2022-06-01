@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layouts/Layout/Layout";
 import LeftMenu from "./Components/leftMenu/LeftMenu";
 import "./Menu.css";
+import Clock from "./Components/clock/Clock";
 
-export default function About() {
+export default function Menu() {
+  const [time, setTime] = useState({ hour: "", min: "", sec: "" });
   const newbutton = (e) => {
     if (e === "Users") {
       console.log(e);
@@ -14,14 +16,13 @@ export default function About() {
     <Layout>
       <div className="Menu">
         <div className="Menu__block">
-          <div className="Menu__block-Text">
-            <h1>Menu Block </h1>
-            <p> here you can found many placeholder menu</p>
-            <p> Users , comments , photo menu</p>
-          </div>
+          <Clock foundTime={setTime} />
         </div>
         <div className="Menu__leftMenu">
           <LeftMenu onClick={newbutton} />
+        </div>
+        <div className="digitalClock">
+          {time.hour} - {time.min} - {time.sec}
         </div>
       </div>
     </Layout>
