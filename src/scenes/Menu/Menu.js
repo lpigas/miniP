@@ -22,7 +22,7 @@ export default function Menu() {
           <LeftMenu onClick={newbutton} />
         </div>
         <div className="digitalClock">
-          {time.hour} - {time.min} - {time.sec}
+          {time.hour} - {time.min} - {time.sec < 10 ? `0${time.sec}` : time.sec}
         </div>
       </div>
     </Layout>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Form({ data }) {
+export default function Form({ data, onClick }) {
   return (
     <div>
       {data.length <= 0 ? (
@@ -11,7 +11,8 @@ export default function Form({ data }) {
             <img
               alt={item.title}
               src={item.url}
-              className="photosblock__conteiner--photoImg"
+              className={`photosblock__conteiner--photoImg `}
+              onClick={onClick}
             />
           </div>
         ))

@@ -6,11 +6,15 @@ import { useSearchParams } from "react-router-dom";
 import { BASE_URL } from "../../../../../helpers/constants/constantsurl";
 import axios from "axios";
 import Form from "./Components/Form/Form";
+import MyModal from "../../../../../components/atoms/Modal/ModalIput/ModalInput";
+import MyButton from "../../../../../components/atoms/Buttons/MyButton/MyButton";
 
 export default function Photos() {
+  const [openModalBigPhoto, setOpenModalBigPhoto] = useState(false);
   const [numberOfPage, setNumberOfPage] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
   const [photoLength, setPhotoLength] = useState([]);
+  const [bigPfotoData, setBigPfotoData] = useState({ alt: "", src: "" });
   const [fullDataUrl, setFullDataUrl] = useState({
     _page: searchParams.get("_page") || 1,
     _limit: 50,
@@ -37,10 +41,24 @@ export default function Photos() {
       setPhotoData(datas.data);
     } catch (e) {}
   };
-  console.log(photoLength.length);
+  const bigPfoto = (data) => {
+    setBigPfotoData({ alt: data.alt, src: data.src });
+    setOpenModalBigPhoto(true);
+  };
+  console.log(bigPfotoData);
   return (
     <Layout>
       <div className="photosblock">
+        <MyModal visible={openModalBigPhoto} setVisible={setOpenModalBigPhoto}>
+          <div
+            className="bigPfoto__close"
+            style={{ background: `url(${bigPfotoData.src})` }}
+          >
+            <MyButton onClick={() => setOpenModalBigPhoto(false)}>
+              Close
+            </MyButton>
+          </div>
+        </MyModal>
         <div>
           <NextPrev
             numberOfPage={numberOfPage}
@@ -49,7 +67,7 @@ export default function Photos() {
           />
         </div>
         <div className="photosblock__conteiner">
-          <Form data={photoData} />
+          <Form data={photoData} onClick={(e) => bigPfoto(e.target)} />
         </div>
         <div></div>
       </div>

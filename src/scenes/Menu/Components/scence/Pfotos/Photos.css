@@ -25,3 +25,13 @@
   max-height: 150px;
   margin: 10px 7px 10px 13px;
 }
+.bigPfoto__close {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: end;
+}
+.bigPfoto__Photo {
+  display: flex;
+  justify-content: center;
+}

@@ -1,11 +1,10 @@
 .Menu {
   margin: 20px auto;
-  
   padding: 15px;
   max-width: 90%;
   min-height: 65vh;
   border-radius: 5%;
-  background-color: rgb(29, 34, 34);
+  background-color: rgb(37, 49, 49);
 }
 .Menu__leftMenu {
   position: sticky;
