@@ -18,6 +18,10 @@ export default function Comments() {
   const [openModalData, setOpenModalData] = useState([]);
   const lengthofComment = 60;
 
+  useEffect(()=>{
+    setSearchParams({ _page: 1, _limit: 100 });
+  },[])
+
   const commentsUrl = `${BASE_URL}comments?_page=${+searchParams.get(
     "_page"
   )}&_limit=100`;

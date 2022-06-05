@@ -14,12 +14,12 @@ export default function NextPrevPage({
     setPage(+searchParams.get("_page") || numberOfPage);
     setNumberOfPage(+searchParams.get("_page"));
   }, [numberOfPage, totalPages, searchParams]);
-
+    console.log(searchParams.get("_limit"))
   const nextPage = () => {
     if (numberOfPage >= totalPages) {
       setNumberOfPage(totalPages);
     } else {
-      setSearchParams({ _page: page + 1 });
+      setSearchParams({ _page: page + 1, _limit: +searchParams.get("_limit") });
       setNumberOfPage(page + 1);
     }
   };
@@ -27,7 +27,7 @@ export default function NextPrevPage({
     if (numberOfPage <= 1) {
       setNumberOfPage(1);
     } else {
-      setSearchParams({ _page: page - 1 });
+      setSearchParams({ _page: page - 1 , _limit: searchParams.get("_limit")||50 });
       setNumberOfPage(page - 1);
     }
   };

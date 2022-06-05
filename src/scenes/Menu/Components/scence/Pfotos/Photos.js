@@ -22,7 +22,7 @@ export default function Photos() {
   const [photoData, setPhotoData] = useState([]);
   const photoUrl = `${BASE_URL}photos?_page=${fullDataUrl._page}&_limit=${fullDataUrl._limit}`;
   useEffect(() => {
-    setSearchParams({ _page: 1, limit: 50 });
+    setSearchParams({ _page: 1, _limit: 50 });
   }, []);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Photos() {
       _limit: 50,
     });
     feachPhotoData();
-  }, [searchParams]);
+  }, [searchParams, ]);
 
   const feachPhotoData = async () => {
     try {
@@ -45,7 +45,7 @@ export default function Photos() {
     setBigPfotoData({ alt: data.alt, src: data.src });
     setOpenModalBigPhoto(true);
   };
-  console.log(bigPfotoData);
+
   return (
     <Layout>
       <div className="photosblock">
