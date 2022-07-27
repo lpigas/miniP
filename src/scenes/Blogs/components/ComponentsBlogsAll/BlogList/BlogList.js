@@ -13,6 +13,7 @@ import axios from "axios";
 import Loading from "../../../../../components/atoms/Loading/Loading";
 
 export default function BlogList() {
+  const [addedBlog, setAddedblog] = useState([]);
   const [findSortData, setFindSortData] = useState({ find: "", sort: "" });
   const newId = Math.ceil(Math.random() * 10001101);
   const [modalAddnewBlog, setModalAddnewBlog] = useState(false);
@@ -30,7 +31,9 @@ export default function BlogList() {
   });
   const [blogforChanging, setBlogforChanging] = useState();
   const [datafromurl, setDatafromurl] = useState(
-    `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+    `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get(
+      "_limit"
+    )}`
   );
 
   const [blogs, setBlogs] = useState([]);
@@ -76,11 +79,36 @@ export default function BlogList() {
     setBlogforChanging(change);
     setModalChange(true);
   };
+  // const newblogfunc = async (newBlogAdd) => {
+  //   setIsLoading(true);
+  //   try {
+  //     const adblog = await axios.post(BASE_URL, newBlogAdd );
+  //     const addnewPosts = await axios.get(fullUrl)
+  //      setBlogs(addnewPosts.data)
+  //   } catch (error) {}
+  //   setIsLoading(false);
+  // };
+
+  //send new blog at server and get blogs
+
+  // const newblogfunc = async (delBlog) => {
+  //   setIsLoading(true);
+  //   try {
+  //     const deldata = await axios.delete(BASE_URL, delBlog );
+  //     const addnewPosts = await axios.get(fullUrl)
+  //      setBlogs(addnewPosts.data)
+  //     setBlogs
+  //   } catch (error) {}
+  //   setIsLoading(false);
+  // };
+  //delete blog at server and get blogs
 
   const AddingBlog = () => {
+    setModalAddnewBlog(false);
+    setAddedblog([...addedBlog, newBlogAdd]);
+
     setBlogs([newBlogAdd, ...blogs]);
     setNewBlogAdd({ id: newId, title: "", body: "" });
-    setModalAddnewBlog(false);
   };
 
   useEffect(() => {
@@ -88,7 +116,7 @@ export default function BlogList() {
       const x = Findsortfunction(blogs, findSortData);
       setBlogsAfterFindesort(x);
     }
-  }, [findSortData, blogs]);
+  }, [findSortData, blogs, page._page]);
 
   const resetfilter = () => {
     setBlogsAfterFindesort(blogs);
@@ -97,7 +125,9 @@ export default function BlogList() {
 
   useEffect(() => {
     setDatafromurl(
-      `?_page=${searchParams.get("_page")}&_limit=${searchParams.get("_limit")}`
+      `posts?_page=${searchParams.get("_page")}&_limit=${searchParams.get(
+        "_limit"
+      )}`
     );
     setPage({
       _page: searchParams.get("_page") || 1,

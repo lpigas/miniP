@@ -1,0 +1,37 @@
+.photosblock {
+  width: 80%;
+  min-height: 65vh;
+  margin: auto;
+}
+.photosblock__conteiner {
+  display: flex;
+  border: 2px solid black;
+  max-width: 80%;
+  min-height: 150px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  flex-wrap: wrap;
+}
+.photosblock__conteiner--photo {
+  display: contents;
+  padding: 5px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+.photosblock__conteiner--photoImg {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 10px 7px 10px 13px;
+}
+.bigPfoto__close {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: end;
+}
+.bigPfoto__Photo {
+  display: flex;
+  justify-content: center;
+}

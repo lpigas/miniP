@@ -1,0 +1,39 @@
+.usersblock {
+  display: flex;
+  width: 100%;
+  min-height: 65vh;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+}
+.table__Users {
+  display: flexbox;
+  width: 100%;
+  min-height: 20vh;
+  margin: 10px;
+  border: 2px solid black;
+  flex-direction: column;
+  justify-content: center;
+  background-color: aqua;
+}
+.table__UsersData_name {
+  display: flexbox;
+  border: 1px solid black;
+  padding: 5px;
+  min-width: 150px;
+  background-color: #fff;
+  text-align: center;
+}
+.table__UsersData_datas {
+  display: flexbox;
+  padding-top: 5px;
+  max-width: 170px;
+  /* background-color: red; */
+  border: 2px solid black;
+  text-align: start;
+  justify-content: start;
+  text-wrap: wrap;
+}
+.table__UsersData_datasSmall {
+  min-width: 90px;
+}

@@ -17,7 +17,7 @@ export default function BlogAll() {
 
   const fullLength = async () => {
     try {
-      const postsData = await axios.get(BASE_URL);
+      const postsData = await axios.get(`${BASE_URL}posts`);
       setLengths(postsData.data.length);
       setTotalPages(Math.ceil(lengths / limit));
     } catch (error) {}
@@ -48,7 +48,6 @@ export default function BlogAll() {
         ></BlogList>
       </div>
       <div>
-        {console.log(page)}
         <Select
           options={optionPage}
           onChange={(e) => enterSelectpage(e)}

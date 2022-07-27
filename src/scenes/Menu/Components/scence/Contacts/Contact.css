@@ -1,0 +1,7 @@
+.contacts_block {
+  margin-top: 4%;
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  /* background: #000; */
+}

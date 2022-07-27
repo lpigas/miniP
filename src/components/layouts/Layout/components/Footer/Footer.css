@@ -1,0 +1,29 @@
+.footer {
+  position: relative;
+  width: 90%;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin: 1vh auto 5px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: row;
+}
+.bodysTr {
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+}
+.footer__link {
+  text-decoration: none;
+  display: flex;
+  width: 225px;
+  height: 15px;
+  justify-content: space-between;
+  margin: 2px;
+}
+.table {
+  width: 100%;
+  margin: auto;
+}
